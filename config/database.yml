@@ -79,6 +79,4 @@ test:
 #
 production:
   <<: *default
-  database: ysmen_crm_production
-  username: ysmen_crm
-  password: <%= ENV["YSMEN_CRM_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
