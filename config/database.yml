@@ -79,4 +79,6 @@ test:
 #
 production:
   <<: *default
-  url: <%= ENV["DATABASE_URL"] %>
+  database: ysmen_crm_production  # Ensure the correct database name is set
+  username: njogu
+  password: <%= ENV['DATABASE_PASSWORD'] %>  
