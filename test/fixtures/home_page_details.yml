@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  motto: MyText
+  history: MyText
+  vision: MyText
+  mission: MyString
+  text: MyString
+  club: one
+  district: one
+
+two:
+  motto: MyText
+  history: MyText
+  vision: MyText
+  mission: MyString
+  text: MyString
+  club: two
+  district: two

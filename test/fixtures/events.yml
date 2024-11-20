@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  image: MyString
+  date: 2024-11-19
+  club: one
+  district: one
+
+two:
+  title: MyString
+  description: MyText
+  image: MyString
+  date: 2024-11-19
+  club: two
+  district: two
