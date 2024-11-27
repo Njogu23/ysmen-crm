@@ -1,0 +1,2 @@
+class DistrictPublication < ApplicationRecord
+end

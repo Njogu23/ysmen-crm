@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_19_213759) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_27_190047) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,11 +20,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_19_213759) do
     t.json "images"
     t.date "date"
     t.bigint "club_id", null: false
-    t.bigint "district_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["club_id"], name: "index_activities_on_club_id"
-    t.index ["district_id"], name: "index_activities_on_district_id"
   end
 
   create_table "clubs", force: :cascade do |t|
@@ -37,6 +35,50 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_19_213759) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["district_id"], name: "index_clubs_on_district_id"
+  end
+
+  create_table "district_activities", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.json "images"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "district_events", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "image_url"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "district_hero_sections", force: :cascade do |t|
+    t.string "title"
+    t.string "subtitle"
+    t.text "subtext"
+    t.string "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "district_home_page_details", force: :cascade do |t|
+    t.text "motto"
+    t.text "history"
+    t.text "vision"
+    t.text "mission"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "district_publications", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "districts", force: :cascade do |t|
@@ -53,11 +95,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_19_213759) do
     t.string "image"
     t.date "date"
     t.bigint "club_id", null: false
-    t.bigint "district_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["club_id"], name: "index_events_on_club_id"
-    t.index ["district_id"], name: "index_events_on_district_id"
   end
 
   create_table "hero_sections", force: :cascade do |t|
@@ -66,11 +106,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_19_213759) do
     t.text "subtext"
     t.string "image"
     t.bigint "club_id", null: false
-    t.bigint "district_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["club_id"], name: "index_hero_sections_on_club_id"
-    t.index ["district_id"], name: "index_hero_sections_on_district_id"
   end
 
   create_table "home_page_details", force: :cascade do |t|
@@ -80,11 +118,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_19_213759) do
     t.string "mission"
     t.string "text"
     t.bigint "club_id", null: false
-    t.bigint "district_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["club_id"], name: "index_home_page_details_on_club_id"
-    t.index ["district_id"], name: "index_home_page_details_on_district_id"
   end
 
   create_table "publications", force: :cascade do |t|
@@ -92,11 +128,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_19_213759) do
     t.text "description"
     t.string "link"
     t.bigint "club_id", null: false
-    t.bigint "district_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["club_id"], name: "index_publications_on_club_id"
-    t.index ["district_id"], name: "index_publications_on_district_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -136,16 +170,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_19_213759) do
   end
 
   add_foreign_key "activities", "clubs"
-  add_foreign_key "activities", "districts"
   add_foreign_key "clubs", "districts"
   add_foreign_key "events", "clubs"
-  add_foreign_key "events", "districts"
   add_foreign_key "hero_sections", "clubs"
-  add_foreign_key "hero_sections", "districts"
   add_foreign_key "home_page_details", "clubs"
-  add_foreign_key "home_page_details", "districts"
   add_foreign_key "publications", "clubs"
-  add_foreign_key "publications", "districts"
   add_foreign_key "users", "clubs"
   add_foreign_key "what_we_dos", "districts"
 end

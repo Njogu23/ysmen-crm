@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :district_home_page_details
+  resources :district_hero_sections
+  resources :district_publications
+  resources :district_activities
+  resources :district_events
   resources :what_we_dos
   resources :home_page_details
   resources :publications
